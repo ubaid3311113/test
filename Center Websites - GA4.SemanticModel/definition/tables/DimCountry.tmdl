@@ -1,0 +1,21 @@
+table DimCountry
+	lineageTag: 1ea17b8e-f9c8-4b16-9031-5bb4179454ec
+
+	column country
+		lineageTag: 53ae3216-8e77-42e7-878d-f2c643e4d27e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: center_websites_overview[country]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCountry = calculated
+		mode: import
+		source =
+				
+				DISTINCT(
+				  'Center_websites_Overview'[country]
+				)
+
+	annotation PBI_Id = 7b64c76385704dca8b2230141b2d7af6
+

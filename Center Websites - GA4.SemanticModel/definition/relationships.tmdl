@@ -1,0 +1,25 @@
+relationship 3d3d0e1a-d496-4a77-9cea-2a46627460f6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.Date
+	toColumn: LocalDateTable_11c66e0d-c6db-4094-8d5a-31b7c7d501b2.Date
+
+relationship a8b0ed84-5b03-7600-0dc2-42fc4201f953
+	fromColumn: center_websites_overview.country
+	toColumn: DimCountry.country
+
+relationship 25e9d5c9-1613-521f-fca4-b02d45afd00f
+	fromColumn: center_websites_overview.streamName
+	toColumn: DimCenter.streamName
+
+relationship 90e542ac-f8e8-508f-0cbe-cb223a97d219
+	fromColumn: center_websites_overview_by_page.streamName
+	toColumn: DimCenter.streamName
+
+relationship aadb0067-e0db-36af-2841-eabc9a769ed7
+	fromColumn: center_websites_overview.date
+	toColumn: Date.Date
+
+relationship bf4962ba-77c1-fba5-5b4f-1b274f44676e
+	fromColumn: center_websites_overview_by_page.date
+	toColumn: Date.Date
+

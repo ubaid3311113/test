@@ -1,0 +1,96 @@
+table Date
+	lineageTag: 7fbd0116-2647-4d97-bf44-d996282d1810
+
+	column Date
+		formatString: Long Date
+		lineageTag: 612b8daf-928b-4fa4-a601-cc26f41de106
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 3d3d0e1a-d496-4a77-9cea-2a46627460f6
+			defaultHierarchy: LocalDateTable_11c66e0d-c6db-4094-8d5a-31b7c7d501b2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 56161288-1a4f-4810-8cbe-c85c3cc31915
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: a53237e0-e4bf-46b1-9ed3-c119db803085
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		formatString: 0
+		lineageTag: c7d848bb-5061-4efa-a3e1-241d69b42189
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		lineageTag: bb58725c-97f8-455d-b35b-7729cc20fc20
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Month
+		lineageTag: 41d44122-f1b9-4ed3-a606-54ee07f5db6e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year-Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week Number'
+		formatString: 0
+		lineageTag: 0b1ddbd0-dbd7-48aa-814a-cdcbe8134577
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day of Week Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		lineageTag: 9e8cc321-fc13-4b4d-95f5-5069fba9aa60
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day of Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = calculated
+		mode: import
+		source =
+				
+				VAR MinDate = MIN( 'center_websites_overview'[date] )
+				VAR MaxDate = MAX( 'center_websites_overview'[date] )
+				RETURN
+				ADDCOLUMNS(
+				  CALENDAR( MinDate, MaxDate ),
+				  "Year", YEAR( [Date] ),
+				  "Quarter", "Q" & FORMAT( [Date], "Q" ),
+				  "Month Number", MONTH( [Date] ),
+				  "Month Name", FORMAT( [Date], "MMMM" ),
+				  "Year-Month", FORMAT( [Date], "YYYY-MM" ),
+				  "Day of Week Number", WEEKDAY( [Date], 2 ),    // Monday = 1
+				  "Day of Week", FORMAT( [Date], "dddd" )
+				)
+
+	annotation PBI_Id = 26353c8fc11b46cb8d58afca6f8a11eb
+

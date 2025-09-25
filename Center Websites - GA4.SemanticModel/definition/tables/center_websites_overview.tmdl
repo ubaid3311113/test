@@ -1,0 +1,171 @@
+table center_websites_overview
+	lineageTag: 735cf7ac-0496-43f1-b613-c4aec4145032
+
+	column activeUsers
+		dataType: int64
+		formatString: #,0
+		lineageTag: 91e45874-f237-465b-8143-1ef575124163
+		summarizeBy: sum
+		sourceColumn: activeUsers
+
+		annotation SummarizationSetBy = Automatic
+
+	column bounceRate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3e484428-081c-4b8c-af31-448de0a7a694
+		summarizeBy: sum
+		sourceColumn: bounceRate
+
+		annotation SummarizationSetBy = Automatic
+
+	column browser
+		dataType: string
+		lineageTag: ec11b6bf-d5c3-481c-ad22-c5bea43aec1e
+		summarizeBy: none
+		sourceColumn: browser
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 3f54df92-f113-45cc-848f-8aef9d9680d2
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2a5d257e-b2ed-4777-adfc-b0436eca2b67
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column deviceCategory
+		dataType: string
+		lineageTag: 33f7d12d-b25e-402c-9d66-b02f8a2c6585
+		summarizeBy: none
+		sourceColumn: deviceCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column engagementRate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 07ff9f46-23ce-4808-9d3c-087bdfbb4197
+		summarizeBy: sum
+		sourceColumn: engagementRate
+
+		annotation SummarizationSetBy = Automatic
+
+	column hostName
+		dataType: string
+		lineageTag: b5f3b711-e349-45f4-a4c4-683441f22933
+		summarizeBy: none
+		sourceColumn: hostName
+
+		annotation SummarizationSetBy = Automatic
+
+	column newUsers
+		dataType: int64
+		formatString: 0
+		lineageTag: 37d459fd-b67f-409c-87f3-e4e1f05c8978
+		summarizeBy: sum
+		sourceColumn: newUsers
+
+		annotation SummarizationSetBy = Automatic
+
+	column operatingSystem
+		dataType: string
+		lineageTag: 357b2bc9-99cd-40f2-8882-8e20d1db9c05
+		summarizeBy: none
+		sourceColumn: operatingSystem
+
+		annotation SummarizationSetBy = Automatic
+
+	column screenPageViews
+		dataType: int64
+		formatString: #,0
+		lineageTag: 85490a66-1650-4e78-8f53-abccf55b5c90
+		summarizeBy: sum
+		sourceColumn: screenPageViews
+
+		annotation SummarizationSetBy = Automatic
+
+	column screenPageViewsPerUser
+		dataType: double
+		lineageTag: eb8e33a3-a237-4bee-b35b-567d79577464
+		summarizeBy: sum
+		sourceColumn: screenPageViewsPerUser
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sessionDefaultChannelGroup
+		dataType: string
+		lineageTag: 9de479c9-9761-452b-a11f-0e51f6df52e4
+		summarizeBy: none
+		sourceColumn: sessionDefaultChannelGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessionSourceMedium
+		dataType: string
+		lineageTag: aa210d68-aa2b-43d1-b74b-ff162126580a
+		summarizeBy: none
+		sourceColumn: sessionSourceMedium
+
+		annotation SummarizationSetBy = Automatic
+
+	column sessions
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d36ce1d-5321-4a56-8275-b16e32c1c97d
+		summarizeBy: sum
+		sourceColumn: sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column streamName
+		dataType: string
+		lineageTag: c2c6c7b6-e887-4b10-a596-f4688f210d62
+		summarizeBy: none
+		sourceColumn: streamName
+
+		annotation SummarizationSetBy = Automatic
+
+	column totalUsers
+		dataType: int64
+		formatString: 0
+		lineageTag: 75ccf669-6481-4532-9e98-36dfbefa01f2
+		summarizeBy: sum
+		sourceColumn: totalUsers
+
+		annotation SummarizationSetBy = Automatic
+
+	column userEngagementDuration
+		dataType: string
+		lineageTag: 55bd6da8-d123-4f43-9421-aa853563f240
+		summarizeBy: none
+		sourceColumn: userEngagementDuration
+
+		annotation SummarizationSetBy = Automatic
+
+	partition center_websites_overview = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"245d2726-f1d2-4ab7-89ea-80660bdf1500" = Workspaces{[workspaceId="245d2726-f1d2-4ab7-89ea-80660bdf1500"]}[Data],
+				    #"7b3fcd07-4106-43ab-ad24-3ae02ca8c56f" = #"245d2726-f1d2-4ab7-89ea-80660bdf1500"{[dataflowId="7b3fcd07-4106-43ab-ad24-3ae02ca8c56f"]}[Data],
+				    center_websites_overview_ = #"7b3fcd07-4106-43ab-ad24-3ae02ca8c56f"{[entity="center_websites_overview",version=""]}[Data]
+				in
+				    center_websites_overview_
+

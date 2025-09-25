@@ -1,0 +1,77 @@
+table center_websites_overview_by_page
+	lineageTag: 30c60db2-9555-486c-bd25-17eb252e2db4
+
+	column activeUsers
+		dataType: int64
+		formatString: #,0
+		lineageTag: dd00e555-3127-46dd-bcc4-9bf2920d0233
+		summarizeBy: sum
+		sourceColumn: activeUsers
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d3582c14-254e-4280-83cf-002c1ccbf0c5
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column fullPageUrl
+		dataType: string
+		lineageTag: c3ddc7ef-6989-4b3e-a6e7-85de8f98215b
+		summarizeBy: none
+		sourceColumn: fullPageUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column pageTitle
+		dataType: string
+		lineageTag: df6386fe-bafd-4e33-88dd-3169bfd2de27
+		summarizeBy: none
+		sourceColumn: pageTitle
+
+		annotation SummarizationSetBy = Automatic
+
+	column screenPageViews
+		dataType: int64
+		formatString: #,0
+		lineageTag: fefcf0e9-991e-4a42-9b35-15ed45f3ef61
+		summarizeBy: sum
+		sourceColumn: screenPageViews
+
+		annotation SummarizationSetBy = Automatic
+
+	column streamName
+		dataType: string
+		lineageTag: c92c3a13-168d-441d-8c64-9578140bb28f
+		summarizeBy: none
+		sourceColumn: streamName
+
+		annotation SummarizationSetBy = Automatic
+
+	column totalUsers
+		dataType: int64
+		formatString: 0
+		lineageTag: 815ceb77-be28-4cf3-9e75-188c4b3956da
+		summarizeBy: sum
+		sourceColumn: totalUsers
+
+		annotation SummarizationSetBy = Automatic
+
+	partition center_websites_overview_by_page = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"245d2726-f1d2-4ab7-89ea-80660bdf1500" = Workspaces{[workspaceId="245d2726-f1d2-4ab7-89ea-80660bdf1500"]}[Data],
+				    #"7b3fcd07-4106-43ab-ad24-3ae02ca8c56f" = #"245d2726-f1d2-4ab7-89ea-80660bdf1500"{[dataflowId="7b3fcd07-4106-43ab-ad24-3ae02ca8c56f"]}[Data],
+				    center_websites_overview_by_page_ = #"7b3fcd07-4106-43ab-ad24-3ae02ca8c56f"{[entity="center_websites_overview_by_page",version=""]}[Data]
+				in
+				    center_websites_overview_by_page_
+

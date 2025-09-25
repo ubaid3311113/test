@@ -1,0 +1,28 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["center_websites_overview","center_websites_overview_by_page"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.144.1378.0 (25.06)+cba1e61f16ea36d44901f06fa446299040122394
+
+annotation __LastRPTime = 134018650291537533
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_6a6dfddc-0be3-41a7-b473-dc02ab9be386
+ref table Date
+ref table DimCountry
+ref table DimCenter
+ref table LocalDateTable_11c66e0d-c6db-4094-8d5a-31b7c7d501b2
+ref table center_websites_overview
+ref table center_websites_overview_by_page
+
+ref cultureInfo en-US
+

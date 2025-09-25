@@ -1,0 +1,21 @@
+table DimCenter
+	lineageTag: 70ace1ec-ea4e-4cc5-a730-8e6674fbbbd7
+
+	column streamName
+		lineageTag: 3e169316-5b8b-4565-998a-2cc20cbefd4d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: center_websites_overview[streamName]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCenter = calculated
+		mode: import
+		source =
+				
+				DISTINCT(
+				  'center_websites_overview'[streamName]
+				)
+
+	annotation PBI_Id = 7f6e64750d1545269af5df3028dce892
+

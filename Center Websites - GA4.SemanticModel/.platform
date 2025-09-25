@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Center Websites - GA4"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6272463b-0ad0-4b70-8a93-3151d56a828f"
+  }
+}
